@@ -1,5 +1,5 @@
-import { Link } from "expo-router";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { Link } from 'expo-router';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function Home(): any {
   return (
@@ -32,16 +32,16 @@ export default function Home(): any {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    padding: 24,
+    alignItems: 'center',
+    padding: 24
   },
   main: {},
   title: {
     fontSize: 64,
-    fontWeight: "bold",
+    fontWeight: 'bold'
   },
   subtitle: {
     fontSize: 36,
-    color: "#38434D",
-  },
+    color: '#38434D'
+  }
 });

@@ -14,15 +14,9 @@ export default function Page(): any {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    padding: 24
+    alignItems: 'center'
   },
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    maxWidth: 960,
-    marginHorizontal: 'auto'
-  },
+  main: {},
   title: {
     fontSize: 64,
     fontWeight: 'bold'

@@ -6,11 +6,11 @@ import Navbar from './components/Navbar';
 export default function Layout(): any {
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Header</Text>
       <View style={styles.main}>
-        <Text style={styles.title}>Header</Text>
         <Slot />
-        <Navbar />
       </View>
+      <Navbar />
     </View>
   );
 }
@@ -20,13 +20,10 @@ export default function Layout(): any {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    padding: 24
+    alignItems: 'center'
   },
   main: {
-    flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 'auto'
+    flex: 1
   },
   title: {
     fontSize: 64,

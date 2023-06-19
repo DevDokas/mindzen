@@ -36,47 +36,55 @@ export default function Navbar(): any {
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
-      height: '7%',
-      width: '90%',
+      height: 72,
+      width: '100%',
       bottom: 0,
-      left: 0,
-      borderRadius: 30,
-      backgroundColor: color.navBackgroundColor
+      left: 0
     },
     main: {
       flex: 1,
       flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'center'
+    },
+    bar: {
+      flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: 'center',
-      gap: 10
+      gap: 20,
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15,
+      height: 72,
+      width: '100%',
+      backgroundColor: color.navBackgroundColor
     },
     homePage: {
-      height: 60,
-      width: 60,
+      height: 68,
+      width: 68,
       borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: homePage
     },
     searchPage: {
-      height: 60,
-      width: 60,
+      height: 68,
+      width: 68,
       borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: searchPage
     },
     calendarPage: {
-      height: 60,
-      width: 60,
+      height: 68,
+      width: 68,
       borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: calendarPage
     },
     profilePage: {
-      height: 60,
-      width: 60,
+      height: 68,
+      width: 68,
       borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
@@ -131,30 +139,36 @@ export default function Navbar(): any {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Link href="/" onPress={selectHome}>
-          <View style={styles.homePage}>
-            <FontAwesome5 name="home" size={50} color={homeSelection} />
-          </View>
-        </Link>
-        <Link href="/pageSearch" onPress={selectSearch}>
-          <View style={styles.searchPage}>
-            <FontAwesome5 name="capsules" size={50} color={searchSelection} />
-          </View>
-        </Link>
-        <Link href="/pageCalendar" onPress={selectCalendar}>
-          <View style={styles.calendarPage}>
-            <FontAwesome5
-              name="calendar-alt"
-              size={50}
-              color={calendarSelection}
-            />
-          </View>
-        </Link>
-        <Link href="/pageProfile" onPress={selectProfile}>
-          <View style={styles.profilePage}>
-            <FontAwesome5 name="grin-alt" size={50} color={profileSelection} />
-          </View>
-        </Link>
+        <View style={styles.bar}>
+          <Link href="/" onPress={selectHome}>
+            <View style={styles.homePage}>
+              <FontAwesome5 name="home" size={50} color={homeSelection} />
+            </View>
+          </Link>
+          <Link href="/(tabs)/pageSearch" onPress={selectSearch}>
+            <View style={styles.searchPage}>
+              <FontAwesome5 name="capsules" size={50} color={searchSelection} />
+            </View>
+          </Link>
+          <Link href="/(tabs)/pageCalendar" onPress={selectCalendar}>
+            <View style={styles.calendarPage}>
+              <FontAwesome5
+                name="calendar-alt"
+                size={50}
+                color={calendarSelection}
+              />
+            </View>
+          </Link>
+          <Link href="/(tabs)/pageProfile" onPress={selectProfile}>
+            <View style={styles.profilePage}>
+              <FontAwesome5
+                name="grin-alt"
+                size={50}
+                color={profileSelection}
+              />
+            </View>
+          </Link>
+        </View>
       </View>
     </View>
   );

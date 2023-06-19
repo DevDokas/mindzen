@@ -29,6 +29,13 @@ module.exports = {
     'react'
   ],
   rules: {
-    "react/react-in-jsx-scope": "off"
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-unneeded-ternary": "off",
+    "no-useless-return": "off"
   }
 }

@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useRef } from 'react';
 import { StyleSheet, View, Text, TextInput, Alert } from 'react-native';
 
@@ -18,10 +18,7 @@ export default function RegisterPage(): any {
   });
 
   return (
-    <View>
-      <Stack.Screen
-        options={{ title: 'Criar conta', headerLeft: () => <></> }}
-      />
+    <View style={styles.container}>
       <View style={styles.main}>
         <Text>Email</Text>
         <TextInput

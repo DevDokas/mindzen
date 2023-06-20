@@ -51,3 +51,6 @@ export const navButtonSection = Serenidade04;
 export const navButtonSelected = Serenidade01;
 export const navButtonSectionSelected = Serenidade04;
 export const navBackgroundColor = Serenidade04;
+
+// Buttons
+export const externalButtons = Serenidade01;

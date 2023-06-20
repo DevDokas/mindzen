@@ -1,6 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 
+import LoginPage from '../(auth)/pageLogin';
+import { AuthStore } from '../config/store';
+
 export default function CalendarPage(): any {
+  const { user, isLoggedIn } = AuthStore.useState();
+
   const styles = StyleSheet.create({
     container: {},
     main: {
@@ -11,9 +16,13 @@ export default function CalendarPage(): any {
 
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text>Calendar</Text>
-      </View>
+      {isLoggedIn ? (
+        <View style={styles.main}>
+          <Text>Calendar</Text>
+        </View>
+      ) : (
+        <LoginPage />
+      )}
     </View>
   );
 }

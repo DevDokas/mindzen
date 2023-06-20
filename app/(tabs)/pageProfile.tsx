@@ -1,8 +1,4 @@
 import * as ImagePicker from 'expo-image-picker';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
-} from 'firebase/auth';
 import { addDoc, collection, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import {
@@ -16,16 +12,24 @@ import {
 } from 'react-native';
 
 import LoginPage from '../(auth)/pageLogin';
-import { FIRESTORE_DB, firebase } from '../config/firebaseConfig';
+import {
+  FIREBASE_AUTH,
+  FIRESTORE_DB,
+  firebase
+} from '../config/firebaseConfig';
+import { AuthStore } from '../config/store';
 
 export default function ProfilePage(): any {
-  const [isLoged, setIsLoged] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>();
   const [userLastname, setUserLastname] = useState<string>();
   const [userBirthday, setUserBirthday] = useState<string>();
   const [userPhoto, setUserPhoto] = useState<any>(null);
   const [userPhotoSelected, setUserPhotoSelected] = useState<boolean>(false);
   const [uploading, setUploading] = useState<boolean>(false);
+
+  const { user, isLoggedIn } = AuthStore.useState();
+
+  console.log(user, isLoggedIn);
 
   // Image Picker
 
@@ -42,8 +46,6 @@ export default function ProfilePage(): any {
       aspect: [4, 3],
       quality: 1
     });
-
-    // console.log(result);
 
     const source = result.assets?.pop();
 
@@ -111,7 +113,7 @@ export default function ProfilePage(): any {
 
   return (
     <View style={styles.container}>
-      {isLoged ? (
+      {isLoggedIn ? (
         <View style={styles.main}>
           <Text style={styles.title}>Profile</Text>
           <Text style={styles.subtitle}>My profile</Text>

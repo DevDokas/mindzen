@@ -6,12 +6,8 @@ import { View, StyleSheet } from 'react-native';
 import * as color from '../config/colorPalette';
 
 export default function Navbar(): any {
-  const [homePage, setHomePage] = useState<string>(
-    color.navButtonSectionSelected
-  );
-  const [homeSelection, setHomeSelection] = useState<string>(
-    color.navButtonSelected
-  );
+  const [homePage, setHomePage] = useState<string>(color.navButtonSection);
+  const [homeSelection, setHomeSelection] = useState<string>(color.navButton);
   const [searchPage, setSearchPage] = useState<string>(color.navButtonSection);
   const [searchSelection, setSearchSelection] = useState<string>(
     color.navButton

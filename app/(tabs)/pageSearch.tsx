@@ -1,6 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 
+import LoginPage from '../(auth)/pageLogin';
+import { AuthStore } from '../config/store';
+
 export default function SearchPage(): any {
+  const { isLoggedIn } = AuthStore.useState();
   const styles = StyleSheet.create({
     container: {},
     main: { marginTop: 128, marginBottom: 72 }
@@ -8,9 +12,13 @@ export default function SearchPage(): any {
 
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text>Search</Text>
-      </View>
+      {isLoggedIn ? (
+        <View style={styles.main}>
+          <Text>Search</Text>
+        </View>
+      ) : (
+        <LoginPage />
+      )}
     </View>
   );
 }

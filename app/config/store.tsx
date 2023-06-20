@@ -40,7 +40,7 @@ export const appSignIn = async (
     });
     return { user: FIREBASE_AUTH.currentUser };
   } catch (e) {
-    return { errror: e };
+    return { error: e };
   }
 };
 

@@ -3,7 +3,6 @@ import { StyleSheet, View } from 'react-native';
 
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import { Provider } from './context/auth';
 
 export default function Layout(): any {
   const styles = StyleSheet.create({

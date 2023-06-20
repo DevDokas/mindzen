@@ -4,8 +4,8 @@ import {
   useRouter,
   useRootNavigationState
 } from 'expo-router';
-import { useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { useCallback, useEffect, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { AuthStore } from './config/store';
 
@@ -31,20 +31,34 @@ export default function Index(): any {
 
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        {!navigationState?.key ? <Text>Loading</Text> : <></>}
-      </View>
+      {isLoggedIn ? (
+        <View style={styles.main}>
+          <View style={styles.block}>
+            <Text>Bem vindo(a) de volta!</Text>
+          </View>
+        </View>
+      ) : (
+        <View style={styles.main}>
+          <View style={styles.block}>
+            <Text>Seja bem vindo!</Text>
+            <Text>Crie uma conta ou acesse sua conta para continuar!</Text>
+            <Link href={'/(auth)/pageLogin'}> Fazer Login</Link>
+            <Link href={'/(auth)/pageRegister'}>Criar Conta</Link>
+          </View>
+        </View>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flex: 1,
     alignItems: 'center'
   },
   main: {
     marginTop: 128,
     marginBottom: 72
-  }
+  },
+  block: {}
 });

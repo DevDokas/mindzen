@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth/react-native';
 import { Store, registerInDevtools } from 'pullstate';
 
-import { FIREBASE_APP, FIREBASE_AUTH } from './firebaseConfig';
+import { FIREBASE_AUTH } from './firebaseConfig';
 
 export const AuthStore = new Store({
   isLoggedIn: false,
@@ -15,7 +15,7 @@ export const AuthStore = new Store({
   user: null
 });
 
-const unsub = onAuthStateChanged(FIREBASE_AUTH, (user) => {
+const unsub = onAuthStateChanged(FIREBASE_AUTH, (user: any) => {
   console.log('onAuthStateChange', user);
   AuthStore.update((store) => {
     store.user = user;
@@ -34,7 +34,7 @@ export const appSignIn = async (
       email,
       password
     );
-    AuthStore.update((store) => {
+    AuthStore.update((store: any) => {
       store.user = resp.user;
       store.isLoggedIn = resp.user ? true : false;
     });
@@ -71,7 +71,7 @@ export const appSignUp = async (
 
     await updateProfile(resp.user, { displayName });
 
-    AuthStore.update((store) => {
+    AuthStore.update((store: any) => {
       store.user = FIREBASE_AUTH.currentUser;
       store.isLoggedIn = true;
     });

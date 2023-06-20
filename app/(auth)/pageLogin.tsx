@@ -1,18 +1,36 @@
 import { Link } from 'expo-router';
-import { StyleSheet, View, Text } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
 
 export default function LoginPage(): any {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
   const styles = StyleSheet.create({
     container: {},
-    main: { marginTop: 128, marginBottom: 72 },
-    text: {}
+    main: {
+      marginTop: 128,
+      marginBottom: 72
+    }
   });
 
   return (
     <View>
       <View style={styles.main}>
         <Text>Login</Text>
-        <Link href="/(auth)/pageRegister"> Clique aqui </Link>
+        <Text>Email</Text>
+        <TextInput
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+        />
+        <Text>Senha</Text>
+        <TextInput
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
+        />
+        <Link href={'/(auth)/pageRegister'}>Criar conta</Link>
       </View>
     </View>
   );

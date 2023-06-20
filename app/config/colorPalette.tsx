@@ -33,13 +33,13 @@ const Serenidade02 = '#B4DFC5'; // Verde-água
 const Serenidade03 = '#EDEDED'; // Branco-pérola
 const Serenidade04 = '#BDBDBD'; // Cinza-prata
 const Serenidade05 = '#35586C'; // Azul-meia-noite
+const Serenidade06 = '#141414'; // Preto
 
 // Minimalismo
 const Minimalismo01 = '#C3E6E8'; // Azul-gelo
 const Minimalismo02 = '#C6DABF'; // Verde-claro
 const Minimalismo03 = '#F2F2F2'; // Branco-gelo
 const Minimalismo04 = '#848484'; // Cinza-chumbo
-const Minimalismo05 = '#212121'; // Preto
 
 // Colors ->
 // Header Colors
@@ -54,3 +54,8 @@ export const navBackgroundColor = Serenidade04;
 
 // Buttons
 export const externalButtons = Serenidade01;
+
+// Loading
+export const loadingBackground = Serenidade06;
+export const loadingAnimation = Serenidade02;
+export const loadingText = Serenidade04;

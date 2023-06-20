@@ -1,8 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 
 import * as color from '../config/colorPalette';
+import { AuthStore } from '../config/store';
 
 export default function Header(): any {
+  const { user, isLoggedIn }: any = AuthStore.useState();
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -36,11 +39,13 @@ export default function Header(): any {
 
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <View style={styles.bar}>
-          <Text>Header</Text>
+      {isLoggedIn ? (
+        <View style={styles.main}>
+          <View style={styles.bar}>
+            <Text>{user?.displayName}</Text>
+          </View>
         </View>
-      </View>
+      ) : null}
     </View>
   );
 }

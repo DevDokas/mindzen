@@ -27,7 +27,7 @@ export default function ProfilePage(): any {
   const [userPhotoSelected, setUserPhotoSelected] = useState<boolean>(false);
   const [uploading, setUploading] = useState<boolean>(false);
 
-  const { user, isLoggedIn } = AuthStore.useState();
+  const { user, isLoggedIn }: any = AuthStore.useState();
 
   console.log(user, isLoggedIn);
 
@@ -62,13 +62,15 @@ export default function ProfilePage(): any {
     const response = await fetch(userPhoto.uri);
     const blob = await response.blob();
     const filename =
-      'user:' + userPhoto.uri.substring(userPhoto.uri.lastIndexOf('/') + 1);
+      user?.uid +
+      user?.email +
+      userPhoto.uri.substring(userPhoto.uri.lastIndexOf('/') + 1);
     const ref = firebase.storage().ref().child(filename).put(blob);
 
     try {
       await ref;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      Alert.alert(error);
     }
     setUploading(false);
     Alert.alert('Foto enviada');

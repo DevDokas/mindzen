@@ -12,7 +12,7 @@ export default function RegisterPage(): any {
   const passwordRef = useRef('');
 
   const styles = StyleSheet.create({
-    container: {},
+    container: { flex: 1, alignItems: 'center' },
     main: { marginTop: 128, marginBottom: 72 },
     text: {}
   });

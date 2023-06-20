@@ -6,7 +6,7 @@ import { AuthStore } from '../config/store';
 export default function SearchPage(): any {
   const { isLoggedIn } = AuthStore.useState();
   const styles = StyleSheet.create({
-    container: {},
+    container: { flex: 1, alignItems: 'center' },
     main: { marginTop: 128, marginBottom: 72 }
   });
 

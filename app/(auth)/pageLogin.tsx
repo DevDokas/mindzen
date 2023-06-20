@@ -10,30 +10,48 @@ export default function LoginPage(): any {
   const passwordRef = useRef('');
 
   const styles = StyleSheet.create({
-    container: {},
+    container: {
+      flex: 1,
+      alignItems: 'center'
+    },
     main: {
       marginTop: 128,
-      marginBottom: 72
+      marginBottom: 72,
+      paddingTop: 150
+    },
+    pageTitle: {
+      fontSize: 48
+    },
+    textInput: {
+      borderBottomWidth: 1,
+      borderBottomColor: '#141414',
+      fontSize: 18
     }
   });
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.main}>
-        <Text>Login</Text>
-        <Text>Email</Text>
-        <TextInput
-          onChangeText={(text) => {
-            emailRef.current = text;
-          }}
-        />
-        <Text>Senha</Text>
-        <TextInput
-          secureTextEntry={true}
-          onChangeText={(text) => {
-            passwordRef.current = text;
-          }}
-        />
+        <Text style={styles.pageTitle}>Login</Text>
+        <View>
+          <Text>Email</Text>
+          <TextInput
+            style={styles.textInput}
+            onChangeText={(text) => {
+              emailRef.current = text;
+            }}
+          />
+        </View>
+        <View>
+          <Text>Senha</Text>
+          <TextInput
+            style={styles.textInput}
+            secureTextEntry={true}
+            onChangeText={(text) => {
+              passwordRef.current = text;
+            }}
+          />
+        </View>
         <Button
           title="Login"
           onPress={async () => {
@@ -46,7 +64,12 @@ export default function LoginPage(): any {
             }
           }}
         />
-        <Link href={'/(auth)/pageRegister'}>Criar conta</Link>
+        <Button
+          title="Cadastrar-se"
+          onPress={() => {
+            router.push('/(auth)/pageRegister');
+          }}
+        />
       </View>
     </View>
   );

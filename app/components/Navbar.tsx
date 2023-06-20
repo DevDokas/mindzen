@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import * as color from '../config/colorPalette';
+import { AuthStore } from '../config/store';
 
 export default function Navbar(): any {
   const [homePage, setHomePage] = useState<string>(color.navButtonSection);
@@ -24,6 +25,8 @@ export default function Navbar(): any {
   const [profileSelection, setProfileSelection] = useState<string>(
     color.navButton
   );
+
+  const { isLoggedIn } = AuthStore.useState();
 
   const styles = StyleSheet.create({
     container: {
@@ -134,38 +137,44 @@ export default function Navbar(): any {
 
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <View style={styles.bar}>
-          <Link href="/" onPress={selectHome}>
-            <View style={styles.homePage}>
-              <FontAwesome5 name="home" size={50} color={homeSelection} />
-            </View>
-          </Link>
-          <Link href="/(tabs)/pageSearch" onPress={selectSearch}>
-            <View style={styles.searchPage}>
-              <FontAwesome5 name="capsules" size={50} color={searchSelection} />
-            </View>
-          </Link>
-          <Link href="/(tabs)/pageCalendar" onPress={selectCalendar}>
-            <View style={styles.calendarPage}>
-              <FontAwesome5
-                name="calendar-alt"
-                size={50}
-                color={calendarSelection}
-              />
-            </View>
-          </Link>
-          <Link href="/(tabs)/pageProfile" onPress={selectProfile}>
-            <View style={styles.profilePage}>
-              <FontAwesome5
-                name="grin-alt"
-                size={50}
-                color={profileSelection}
-              />
-            </View>
-          </Link>
+      {isLoggedIn ? (
+        <View style={styles.main}>
+          <View style={styles.bar}>
+            <Link href="/" onPress={selectHome}>
+              <View style={styles.homePage}>
+                <FontAwesome5 name="home" size={50} color={homeSelection} />
+              </View>
+            </Link>
+            <Link href="/(tabs)/pageSearch" onPress={selectSearch}>
+              <View style={styles.searchPage}>
+                <FontAwesome5
+                  name="capsules"
+                  size={50}
+                  color={searchSelection}
+                />
+              </View>
+            </Link>
+            <Link href="/(tabs)/pageCalendar" onPress={selectCalendar}>
+              <View style={styles.calendarPage}>
+                <FontAwesome5
+                  name="calendar-alt"
+                  size={50}
+                  color={calendarSelection}
+                />
+              </View>
+            </Link>
+            <Link href="/(tabs)/pageProfile" onPress={selectProfile}>
+              <View style={styles.profilePage}>
+                <FontAwesome5
+                  name="grin-alt"
+                  size={50}
+                  color={profileSelection}
+                />
+              </View>
+            </Link>
+          </View>
         </View>
-      </View>
+      ) : null}
     </View>
   );
 }

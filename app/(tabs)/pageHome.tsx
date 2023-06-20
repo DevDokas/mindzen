@@ -10,7 +10,7 @@ export default function HomePage(): any {
   const { user }: any = AuthStore.useState();
 
   const styles = StyleSheet.create({
-    container: {},
+    container: { flex: 1, alignItems: 'center' },
     main: {
       marginTop: 128,
       marginBottom: 72

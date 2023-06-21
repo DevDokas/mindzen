@@ -1,10 +1,16 @@
 import { View, Text, StyleSheet } from 'react-native';
+import {  useEffect, useState } from 'react'
+import { doc, onSnapshot, getDoc } from 'firebase/firestore';
 
 import * as color from '../config/colorPalette';
 import { AuthStore } from '../config/store';
+import { FIRESTORE_DB } from '../config/firebaseConfig';
+import { useRouter } from 'expo-router';
 
-export default function Header(): any {
-  const { user, isLoggedIn }: any = AuthStore.useState();
+export default function Header(): any  {
+  const router = useRouter()
+  const [userInfo, setUserInfo] = useState<any>()
+  const { user }: any = AuthStore.useState();
 
   const styles = StyleSheet.create({
     container: {
@@ -39,13 +45,11 @@ export default function Header(): any {
 
   return (
     <View style={styles.container}>
-      {isLoggedIn ? (
-        <View style={styles.main}>
-          <View style={styles.bar}>
-            <Text>{user?.displayName}</Text>
-          </View>
+      <View style={styles.main}>
+        <View style={styles.bar}>
+          <Text>{user?.displayName}</Text>
         </View>
-      ) : null}
+      </View>
     </View>
   );
 }

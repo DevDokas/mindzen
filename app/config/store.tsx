@@ -5,15 +5,18 @@ import {
   signOut,
   updateProfile
 } from 'firebase/auth/react-native';
+import { doc, setDoc } from 'firebase/firestore';
 import { Store, registerInDevtools } from 'pullstate';
 
-import { FIREBASE_AUTH } from './firebaseConfig';
+import { FIREBASE_AUTH, FIRESTORE_DB } from './firebaseConfig';
 
 export const AuthStore = new Store({
   isLoggedIn: false,
   isLoading: false,
   initialized: false,
-  user: null
+  user: null,
+  userName: null,
+  userLastname: null
 });
 
 const unsub = onAuthStateChanged(FIREBASE_AUTH, (user: any) => {
@@ -54,6 +57,7 @@ export const appSignOut = async (): Promise<any> => {
       store.user = null;
       store.isLoggedIn = false;
       store.isLoading = false;
+      store.initialized= false
     });
     return { user: null };
   } catch (e) {
@@ -78,7 +82,24 @@ export const appSignUp = async (
     AuthStore.update((store: any) => {
       store.user = FIREBASE_AUTH.currentUser;
       store.isLoggedIn = true;
+      store.initialized = true
     });
+
+    const usersDB = doc(FIRESTORE_DB, 'users', resp.user.uid);
+    const splitName: any =  resp.user.displayName?.split(' ')
+    const firstName = splitName[0]
+    const lastName = splitName[1]
+
+    console.log(firstName)
+    console.log(usersDB)
+
+    const addUsers = async (): Promise<any> => {
+      setDoc(usersDB, {
+        name: firstName,
+        lastname: lastName
+      }).then(docRef => {console.log('Added', docRef)}).catch(e => console.log(e));
+    };
+    addUsers()
 
     return { user: FIREBASE_AUTH.currentUser };
   } catch (e) {

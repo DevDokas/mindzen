@@ -13,6 +13,13 @@
     "production": {}
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "./pc-api-4983678381350252161-300-686d2fafeda1.json",
+        "track": "internal",
+        "releaseStatus": "inProgress",
+        "applicationId": "105501737538917582993"
+      }
+    }
   }
 }

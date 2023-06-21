@@ -3,8 +3,11 @@ import { StyleSheet, View } from 'react-native';
 
 import Header from './components/Header';
 import Navbar from './components/Navbar';
+import { AuthStore } from './config/store';
 
 export default function Layout(): any {
+  const {isLoggedIn} = AuthStore.useState()
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -25,11 +28,11 @@ export default function Layout(): any {
 
   return (
     <View style={styles.container}>
-      <Header />
+      {isLoggedIn?<Header />:null}
       <View style={styles.main}>
         <Slot />
       </View>
-      <Navbar />
+      {isLoggedIn?<Navbar />:null}
     </View>
   );
 }

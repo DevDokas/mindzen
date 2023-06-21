@@ -1,5 +1,5 @@
 import * as ImagePicker from 'expo-image-picker';
-import { addDoc, collection, onSnapshot } from 'firebase/firestore';
+import { setDoc, onSnapshot, doc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import {
   StyleSheet,
@@ -78,7 +78,7 @@ export default function ProfilePage(): any {
   };
   //
 
-  const usersDB = collection(FIRESTORE_DB, user.uid);
+  const usersDB = doc(FIRESTORE_DB, 'users', user.uid);
   //
   useEffect(() => {
     const subscribers = onSnapshot(usersDB, {
@@ -88,10 +88,10 @@ export default function ProfilePage(): any {
   //
 
   const addUsers = async (): Promise<any> => {
-    const doc = addDoc(usersDB, {
+    setDoc(usersDB, {
       name: userName,
       lastname: userLastname
-    });
+    }).then(docRef => {console.log('Added')}).catch(e => console.log(e));
   };
 
   const styles = StyleSheet.create({

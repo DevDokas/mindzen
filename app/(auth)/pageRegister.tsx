@@ -142,7 +142,8 @@ export default function RegisterPage(): any {
                   firstNameRef.current + ' ' + lastNameRef.current
                 );
                 if (resp?.user) {
-                  router.replace('/homePage');
+
+                  router.replace('/(tabs)/pageHome');
                 } else {
                   console.log(resp.error);
                   Alert.alert(

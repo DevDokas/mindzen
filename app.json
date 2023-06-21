@@ -1,12 +1,22 @@
 {
   "expo": {
     "name": "MindZen",
-    "slug": "MindZen",
+    "slug": "mindzen",
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "icon": "./app/assets/icon.png",
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
     "splash": {
       "image": "./app/assets/splash.png",
       "resizeMode": "contain",
@@ -25,11 +35,18 @@
       "icon": "./app/assets/adaptive-icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
-        "backgroundColor": "#18252a"
-      }
+        "backgroundColor": "#B4DFC5"
+      },
+      "package": "com.igordokai.mindzen"
     },
     "web": {
       "bundler": "metro"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f6be742a-f9e5-4929-9115-c1e4c50146c9"
+      }
+    },
+    "owner": "igordokai"
   }
 }

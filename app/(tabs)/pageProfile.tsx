@@ -78,7 +78,7 @@ export default function ProfilePage(): any {
   };
   //
 
-  const usersDB = collection(FIRESTORE_DB, 'users');
+  const usersDB = collection(FIRESTORE_DB, user.uid);
   //
   useEffect(() => {
     const subscribers = onSnapshot(usersDB, {

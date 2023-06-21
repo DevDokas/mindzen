@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   View,
@@ -70,6 +70,10 @@ export default function LoginPage(): any {
       letterSpacing: 0.25,
       color: 'white'
     },
+    loadingContainer: {
+      position: 'absolute',
+      backgroundColor: 'red'
+    },
     loading: { width: 200, height: 200, backgroundColor: '#eee' }
   });
 
@@ -78,7 +82,11 @@ export default function LoginPage(): any {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        {isLoading ? <Loading /> : null}
+        {isLoading ? (
+          <View style={styles.loadingContainer}>
+            <Loading />
+          </View>
+        ) : null}
         <Text style={styles.pageTitle}>Login</Text>
         <View style={styles.formContainer}>
           <View style={styles.emailContainer}>

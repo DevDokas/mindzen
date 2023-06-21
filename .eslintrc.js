@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    "cypress/globals": true,
     browser: true,
     es2021: true
   },
@@ -22,8 +23,13 @@ module.exports = {
         },
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module'
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+    // project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
   plugins: [
     'react'

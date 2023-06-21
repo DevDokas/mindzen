@@ -1,10 +1,35 @@
 {
   "expo": {
-    "scheme": "acme",
+    "name": "MindZen",
+    "slug": "MindZen",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "icon": "./app/assets/icon.png",
+    "splash": {
+      "image": "./app/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#d0d0d0"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "icon": "./app/assets/adaptive-icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/adaptive-icon.png",
+        "backgroundColor": "#18252a"
+      }
+    },
     "web": {
       "bundler": "metro"
-    },
-    "name": "MindZen",
-    "slug": "MindZen"
+    }
   }
 }

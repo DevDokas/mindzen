@@ -10,7 +10,11 @@ import { useRouter } from 'expo-router';
 export default function Header(): any  {
   const router = useRouter()
   const [userInfo, setUserInfo] = useState<any>()
-  const { user }: any = AuthStore.useState();
+  const [userLogedIn, setUserLogedIn] = useState<boolean>(false)
+  const { user, isLoggedIn }: any = AuthStore.useState();
+
+  useEffect(() => {
+  }, [setUserInfo, setUserLogedIn])
 
   const styles = StyleSheet.create({
     container: {
@@ -47,7 +51,7 @@ export default function Header(): any  {
     <View style={styles.container}>
       <View style={styles.main}>
         <View style={styles.bar}>
-          <Text>{user?.displayName}</Text>
+          {isLoggedIn?<Text>{user?.displayName}</Text>:null}
         </View>
       </View>
     </View>
